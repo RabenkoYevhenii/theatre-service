@@ -9,5 +9,6 @@ urlpatterns = [
             "theatre_service.urls", namespace="theatre_service"
         )
     ),
+    path("api/user/", include("user.urls", namespace="user")),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
 ]
