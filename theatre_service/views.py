@@ -115,7 +115,27 @@ class PlayViewSet(
         if self.action == "retrieve":
             return PlayDetailSerializer
 
+        if self.action == "upload_image":
+            return PlayImageSerializer
+
         return PlaySerializer
+
+    @action(
+        methods=["POST"],
+        detail=True,
+        url_path="upload-image",
+        permission_classes=[IsAdminUser],
+    )
+    def upload_image(self, request, pk=None):
+        """Endpoint for uploading image to specific play"""
+        play = self.get_object()
+        serializer = self.get_serializer(play, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @extend_schema(
         parameters=[
@@ -176,27 +196,7 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         if self.action == "retrieve":
             return PerformanceDetailSerializer
 
-        if self.action == "upload_image":
-            return PlayImageSerializer
-
         return PerformanceSerializer
-
-    @action(
-        methods=["POST"],
-        detail=True,
-        url_path="upload-image",
-        permission_classes=[IsAdminUser],
-    )
-    def upload_image(self, request, pk=None):
-        """Endpoint for uploading image to specific play"""
-        play = self.get_object()
-        serializer = self.get_serializer(play, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @extend_schema(
         parameters=[
