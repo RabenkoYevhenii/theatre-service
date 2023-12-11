@@ -6,8 +6,8 @@ from django.db import models
 class Play(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    actors = models.ManyToManyField("Actor", related_name="plays")
-    genres = models.ManyToManyField("Genre", related_name="plays")
+    actors = models.ManyToManyField("Actor", related_name="plays", blank=True)
+    genres = models.ManyToManyField("Genre", related_name="plays", blank=True)
 
     class Meta:
         ordering = ["title"]
@@ -32,7 +32,7 @@ class Actor(models.Model):
 
 
 class Genre(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     class Meta:
         ordering = ["name"]
@@ -67,7 +67,7 @@ class Performance(models.Model):
     showtime = models.DateTimeField()
 
     class Meta:
-        ordering = ["showtime"]
+        ordering = ["-showtime"]
 
     def __str__(self):
         return f"{self.play.title} {self.showtime}"
@@ -80,7 +80,7 @@ class Reservation(models.Model):
     )
 
     class Meta:
-        ordering = ["created_at"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return f"{self.user.first_name} at {self.created_at}"
