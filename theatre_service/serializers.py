@@ -1,3 +1,4 @@
+from django.db import transaction
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
@@ -153,24 +154,26 @@ class PerformanceDetailSerializer(PerformanceSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Reservation
-        fields = (
-            "id",
-            "created_at",
-            "user",
-        )
-
-
-class ReservationListSerializer(ReservationSerializer):
-    user_first_name = serializers.CharField(
-        source="user.first_name", read_only=True
+    tickets = TicketListSerializer(
+        many=True, read_only=False, allow_empty=False
     )
 
     class Meta:
         model = Reservation
         fields = (
             "id",
+            "tickets",
             "created_at",
-            "user_first_name",
         )
+
+    def create(self, validated_data):
+        with transaction.atomic():
+            tickets_data = validated_data.pop("tickets")
+            reservation = Reservation.objects.create(**validated_data)
+            for ticket_data in tickets_data:
+                Ticket.objects.create(reservation=reservation, **ticket_data)
+            return reservation
+
+
+class ReservationListSerializer(ReservationSerializer):
+    tickets = TicketListSerializer(many=True, read_only=True)
