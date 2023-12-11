@@ -35,6 +35,11 @@ from theatre_service.serializers import (
 )
 
 
+class Pagination(PageNumberPagination):
+    page_size = 10
+    max_page_size = 100
+
+
 class ActorViewSet(
     mixins.CreateModelMixin,
     mixins.ListModelMixin,
@@ -42,6 +47,7 @@ class ActorViewSet(
 ):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
+    pagination_class = Pagination
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
@@ -73,6 +79,7 @@ class PlayViewSet(
 ):
     queryset = Play.objects.prefetch_related("actors", "genres")
     serializer_class = PlaySerializer
+    pagination_class = Pagination
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @staticmethod
@@ -211,11 +218,6 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return super().list(request, *args, **kwargs)
 
 
-class ReservationPagination(PageNumberPagination):
-    page_size = 10
-    max_page_size = 100
-
-
 class ReservationViewSet(
     mixins.ListModelMixin,
     mixins.CreateModelMixin,
@@ -225,7 +227,7 @@ class ReservationViewSet(
         "tickets__performance__play", "tickets__performance__theatre_hall"
     )
     serializer_class = ReservationSerializer
-    pagination_class = ReservationPagination
+    pagination_class = Pagination
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
