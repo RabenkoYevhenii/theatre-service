@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_spectacular",
     "theatre_service",
+    "user",
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,8 @@ AUTH_PASSWORD_VALIDATORS = [
                 "NumericPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = "user.User"
 
 
 # Internationalization
