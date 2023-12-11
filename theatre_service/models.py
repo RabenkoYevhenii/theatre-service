@@ -96,6 +96,10 @@ class Ticket(models.Model):
         Reservation, on_delete=models.CASCADE, related_name="tickets"
     )
 
+    class Meta:
+        unique_together = ("performance", "row", "seat")
+        ordering = ["row", "seat"]
+
     @staticmethod
     def validate_ticket(row, seat, theatre_hall, error_to_raise):
         for ticket_attr_value, ticket_attr_name, theatre_hall_attr_name in [
@@ -132,10 +136,6 @@ class Ticket(models.Model):
         return super(Ticket, self).save(
             force_insert, force_update, using, update_fields
         )
-
-    class Meta:
-        unique_together = ("performance", "row", "seat")
-        ordering = ["row", "seat"]
 
     def __str__(self):
         return f"{str(self.performance)} (row: {self.row}, seat: {self.seat})"
