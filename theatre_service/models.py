@@ -77,7 +77,9 @@ class Performance(models.Model):
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reservations"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="reservations"
     )
 
     class Meta:
