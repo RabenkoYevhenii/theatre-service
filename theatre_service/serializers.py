@@ -88,7 +88,7 @@ class PerformanceListSerializer(PerformanceSerializer):
         source="theatre_hall.name", read_only=True
     )
     theatre_hall_capacity = serializers.IntegerField(
-        source="theatre_hall", read_only=True
+        source="theatre_hall.capacity", read_only=True
     )
     tickets_available = serializers.IntegerField(read_only=True)
 
