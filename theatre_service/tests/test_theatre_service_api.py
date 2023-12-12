@@ -14,7 +14,6 @@ from theatre_service.serializers import (
     PlayDetailSerializer,
 )
 
-
 PLAY_URL = reverse("theatre_service:play-list")
 PERFORMANCE_URL = reverse("theatre_service:performance-list")
 
@@ -116,8 +115,6 @@ class PlayImageUploadTests(TestCase):
                 {
                     "title": "Title",
                     "description": "Description",
-                    "genres": [1],
-                    "actors": [1],
                     "image": ntf,
                 },
                 format="multipart",
