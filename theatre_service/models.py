@@ -1,18 +1,9 @@
-import os
-import uuid
-
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.text import slugify
 
-
-def play_image_file_path(instance, filename):
-    _, extension = os.path.split(filename)
-    filename = f"{slugify(instance.title)}-{uuid.uuid4()}{extension}"
-
-    return os.path.join("uploads/plays", filename)
+from theatre_service.helpers import play_image_file_path
 
 
 class Play(models.Model):
@@ -41,7 +32,7 @@ class Actor(models.Model):
 
     @property
     def full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        return str(self)
 
 
 class Genre(models.Model):
