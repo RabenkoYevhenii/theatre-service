@@ -1,0 +1,296 @@
+[
+  {
+    "model": "theatre_service.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Drama"
+    }
+  },
+  {
+    "model": "theatre_service.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Comedy"
+    }
+  },
+  {
+    "model": "theatre_service.genre",
+    "pk": 3,
+    "fields": {
+      "name": "Action"
+    }
+  },
+  {
+    "model": "theatre_service.genre",
+    "pk": 4,
+    "fields": {
+      "name": "Romance"
+    }
+  },
+  {
+    "model": "theatre_service.genre",
+    "pk": 5,
+    "fields": {
+      "name": "Thriller"
+    }
+  },
+  {
+    "model": "theatre_service.actor",
+    "pk": 1,
+    "fields": {
+      "first_name": "Robert",
+      "last_name": "De Niro"
+    }
+  },
+  {
+    "model": "theatre_service.actor",
+    "pk": 2,
+    "fields": {
+      "first_name": "Tom",
+      "last_name": "Hanks"
+    }
+  },
+  {
+    "model": "theatre_service.actor",
+    "pk": 3,
+    "fields": {
+      "first_name": "Meryl",
+      "last_name": "Streep"
+    }
+  },
+  {
+    "model": "theatre_service.actor",
+    "pk": 4,
+    "fields": {
+      "first_name": "Leonardo",
+      "last_name": "DiCaprio"
+    }
+  },
+  {
+    "model": "theatre_service.actor",
+    "pk": 5,
+    "fields": {
+      "first_name": "Scarlett",
+      "last_name": "Johansson"
+    }
+  },
+  {
+    "model": "theatre_service.theatrehall",
+    "pk": 1,
+    "fields": {
+      "name": "Main Hall",
+      "rows": 10,
+      "seats_in_row": 15
+    }
+  },
+  {
+    "model": "theatre_service.theatrehall",
+    "pk": 2,
+    "fields": {
+      "name": "Small Hall",
+      "rows": 5,
+      "seats_in_row": 10
+    }
+  },
+  {
+    "model": "theatre_service.theatrehall",
+    "pk": 3,
+    "fields": {
+      "name": "VIP Hall",
+      "rows": 3,
+      "seats_in_row": 8
+    }
+  },
+  {
+    "model": "theatre_service.theatrehall",
+    "pk": 4,
+    "fields": {
+      "name": "Outdoor Stage",
+      "rows": 15,
+      "seats_in_row": 20
+    }
+  },
+  {
+    "model": "theatre_service.theatrehall",
+    "pk": 5,
+    "fields": {
+      "name": "Experimental Room",
+      "rows": 8,
+      "seats_in_row": 12
+    }
+  },
+  {
+    "model": "theatre_service.play",
+    "pk": 1,
+    "fields": {
+      "title": "The Godfather",
+      "description": "An offer you can't refuse",
+      "image": null,
+      "actors": [1],
+      "genres": [1]
+    }
+  },
+  {
+    "model": "theatre_service.play",
+    "pk": 2,
+    "fields": {
+      "title": "Forrest Gump",
+      "description": "Life is like a box of chocolates",
+      "image": null,
+      "actors": [2],
+      "genres": [2]
+    }
+  },
+  {
+    "model": "theatre_service.play",
+    "pk": 3,
+    "fields": {
+      "title": "The Devil Wears Prada",
+      "description": "A story about fashion and power",
+      "image": null,
+      "actors": [3],
+      "genres": [4]
+    }
+  },
+  {
+    "model": "theatre_service.play",
+    "pk": 4,
+    "fields": {
+      "title": "Inception",
+      "description": "Your mind is the scene of the crime",
+      "image": null,
+      "actors": [4],
+      "genres": [5]
+    }
+  },
+  {
+    "model": "theatre_service.play",
+    "pk": 5,
+    "fields": {
+      "title": "Lost in Translation",
+      "description": "A lonely actor and a young woman cross paths",
+      "image": null,
+      "actors": [5],
+      "genres": [3]
+    }
+  },
+  {
+    "model": "theatre_service.performance",
+    "pk": 1,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 1,
+      "showtime": "2023-12-15T20:00:00Z"
+    }
+  },
+  {
+    "model": "theatre_service.performance",
+    "pk": 2,
+    "fields": {
+      "play": 2,
+      "theatre_hall": 2,
+      "showtime": "2023-12-16T18:30:00Z"
+    }
+  },
+  {
+    "model": "theatre_service.performance",
+    "pk": 3,
+    "fields": {
+      "play": 3,
+      "theatre_hall": 3,
+      "showtime": "2023-12-17T19:45:00Z"
+    }
+  },
+  {
+    "model": "theatre_service.performance",
+    "pk": 4,
+    "fields": {
+      "play": 4,
+      "theatre_hall": 4,
+      "showtime": "2023-12-18T21:15:00Z"
+    }
+  },
+  {
+    "model": "theatre_service.performance",
+    "pk": 5,
+    "fields": {
+      "play": 5,
+      "theatre_hall": 5,
+      "showtime": "2023-12-19T17:00:00Z"
+    }
+  },
+  {
+    "model": "theatre_service.reservation",
+    "pk": 1,
+    "fields": {
+      "created_at": "2023-12-10T12:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "theatre_service.reservation",
+    "pk": 2,
+    "fields": {
+      "created_at": "2023-12-10T12:30:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "theatre_service.reservation",
+    "pk": 3,
+    "fields": {
+      "created_at": "2023-12-10T13:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "theatre_service.ticket",
+    "pk": 1,
+    "fields": {
+      "row": 5,
+      "seat": 8,
+      "performance": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "theatre_service.ticket",
+    "pk": 2,
+    "fields": {
+      "row": 3,
+      "seat": 10,
+      "performance": 2,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "theatre_service.ticket",
+    "pk": 3,
+    "fields": {
+      "row": 2,
+      "seat": 5,
+      "performance": 3,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_service.ticket",
+    "pk": 4,
+    "fields": {
+      "row": 7,
+      "seat": 12,
+      "performance": 4,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_service.ticket",
+    "pk": 5,
+    "fields": {
+      "row": 10,
+      "seat": 6,
+      "performance": 5,
+      "reservation": 3
+    }
+  }
+]
